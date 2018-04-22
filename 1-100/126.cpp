@@ -1,3 +1,24 @@
+/*Given two words (beginWord and endWord), and a dictionary's word list, find all shortest transformation sequence(s) from beginWord to endWord, such that:
+
+Only one letter can be changed at a time
+Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
+
+Input:
+beginWord = "hit",
+endWord = "cog",
+wordList = ["hot","dot","dog","lot","log","cog"]
+
+Output:
+[
+  ["hit","hot","dot","dog","cog"],
+  ["hit","hot","lot","log","cog"]
+]
+*/
+
+/*
+Idea: set up one map from endWord to beginWord via bfs.Then using dfs from beginWord to endWord,guaranteeing the depth 
+of next node equals current node.
+ */
 class Solution {
 public:
     bool one(string a, string b){
