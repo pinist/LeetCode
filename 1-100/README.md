@@ -1,3 +1,5 @@
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+
 # LeetCode 001-100
 
 
@@ -20,7 +22,7 @@ $$
 $$
 $\alpha+\beta$
 
-$ \begin{matrix}a&b\\c&d \end{matrix}​$  -> $ \begin{matrix}c&a\\d&b\end{matrix} ​$ 
+$ \begin{matrix}a&b\\c&d \end{matrix}$  -> $ \begin{matrix}c&a\\d&b\end{matrix} $ 
 
 
 3x3:  $\begin{matrix}a&b&c\\d&e&f\\g&h&i\end{matrix}$ -> $\begin{matrix}g&d&a\\h&e&b\\i&f&c\end{matrix}$ 
