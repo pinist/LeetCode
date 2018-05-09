@@ -15,18 +15,11 @@
 An algorithm of image processing
 
 2x2:  
-$$
 
-$$
-$ \begin{matrix}a&b\\c&d \end{matrix}​$  -> $ \begin{matrix}c&a\\d&b\end{matrix} ​$ 
-$$
-
-$$
+$ \begin{matrix}a&b\\c&d \end{matrix}$  -> $ \begin{matrix}c&a\\d&b\end{matrix} $ 
 
 
 3x3:  $\begin{matrix}a&b&c\\d&e&f\\g&h&i\end{matrix}$ -> $\begin{matrix}g&d&a\\h&e&b\\i&f&c\end{matrix}$ 
-
-
 
 ​          $\begin{matrix}A&B&c\\d&e&f\\g&h&i\end{matrix}$ ->  $\begin{matrix}g&d&A\\h&e&B\\i&f&c\end{matrix}$
 
