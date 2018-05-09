@@ -14,11 +14,21 @@
 
 An algorithm of image processing
 
-2x2: $ab\\cd$ -> $ca\\db$
+2x2:  $ ab\\cd $  -> $ ca\\db $
 
-3x3 $abc\\def\\ghi$ -> $gda\\heb\\ifc$
 
-$\begin{matrix}A&B&c\\d&e&f\\g&h&i\end{matrix}​$ ->  $gdA\\heB\\ifc​$
+
+3x3: $\begin{matrix}a&b&c\\d&e&f\\g&h&i\end{matrix}$ -> $gda\\heb\\ifc$
+
+$\begin{matrix}A&B&c\\d&e&f\\g&h&i\end{matrix}$ ->  $\begin{matrix}g&d&A\\h&e&B\\i&f&c\end{matrix}$
+
+
+
+
+
+
+
+}$
 
 **Code:**
 
