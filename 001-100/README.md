@@ -165,7 +165,7 @@ nums.erase(unique(nums.begin(),nums.end()),nums.end());
 
 
 
-## 035. Search Insert Position
+## 035. Search Insert Position##
 
 **Tag: Ad-Hoc**
 
@@ -176,8 +176,6 @@ using lower-bound. Time: $O(logN) $
 ```c++
 lower_bound(nums.begin(),nums.end(),target)-nums.begin();
 ```
-
-
 
 
 
@@ -217,4 +215,118 @@ for(int i=0;i<(n>>1);i++){
 ```
 
 
+
+## 051. N-Queens 
+
+**Tag:Backtracking**
+
+**solution:**  C[cur]=i; cur means the current line. I means i th row which  accord with condition.
+
+```c++
+if(cur==n){            
+	tmp.assign(n,string(n,'.'));
+	for(int i=0;i<n;i++)
+		tmp[i][C[i]]='Q';
+	ans.push_back(tmp);
+}
+```
+
+
+
+## 052. N-Queens II
+
+**Tag:Backtracking **
+
+**Solution:**
+
+l2 means the main diagonal, l1 means minor diagonal;
+
+**Code:**
+
+```c++
+void dfs(int cur){
+       if(cur==n) { 
+           ans++;
+           return;
+       } 
+       for(int i=0;i<n;i++){
+           if(!vis[i]&&!l1[cur+i]&&!l2[cur-i+n]){
+               vis[i]=l1[cur+i]=l2[cur-i+n]=1;
+               dfs(cur+1);
+               vis[i]=l1[cur+i]=l2[cur-i+n]=0;
+           }
+       }
+        return;     
+    }
+```
+
+
+
+## 069. Sqrt(x)
+
+**Tag:Binary Search **
+
+**Solution:**
+
+Using the binary search to find sqrt(x);
+
+**Code:**
+
+```c++
+int start=0,end=x;
+	while(start+1<end){
+		int mid=start+(end-start)/2;
+		if(x/mid==mid) return mid;
+		else if(x/mid>mid) start=mid;
+		else end = mid;
+	}
+    if(x/end==end) return end;
+	return start;
+```
+
+
+
+## 098. Validate Binary Search Tree
+
+**Tag:DFS**
+
+**Solution:**
+
+using pair to solve problem
+
+**Code:**
+
+```
+if(root==NULL) return make_pair((LL)INT_MAX+1,(LL)INT_MIN-1);
+pair<LL,LL> l=dfs(root->left),r=dfs(root->right);
+if(!(l.second < root->val && root->val < r.first)) f=0;
+return make_pair(min(l.first,(LL)root->val),max((LL)root->val,r.second));
+```
+
+
+
+## 102.Binary Tree Level Order Traversal 
+
+**Tag: BFS**
+
+**Solution:**
+
+using two queue 
+
+```c++
+while(!qu.empty()){
+ 	vec.clear();
+	while(!qu.empty()){
+		if(qu.front()->left!=NULL) tmp.push(qu.front()->left);
+		if(qu.front()->right!=NULL) tmp.push(qu.front()->right);
+		vec.push_back(qu.front()->val);
+		qu.pop();
+	}
+	while(!tmp.empty()){
+		qu.push(tmp.front());
+		tmp.pop();
+	}
+	res.push_back(vec);
+}
+```
 
