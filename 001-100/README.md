@@ -165,7 +165,7 @@ nums.erase(unique(nums.begin(),nums.end()),nums.end());
 
 
 
-## 035. Search Insert Position##
+## 035. Search Insert Position
 
 **Tag: Ad-Hoc**
 
