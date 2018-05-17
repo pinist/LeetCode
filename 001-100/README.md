@@ -262,6 +262,77 @@ void dfs(int cur){
 
 
 
+## 062. Unique Paths 
+
+**Tag: Dynamic Programming**
+
+**Solution:**
+
+DP$[i][j]$  means The number of paths to a $i,j$
+
+$DP$$[i][j]$ =DP$[i-1][j]$+DP$[i][j-1]$
+
+```c++
+for (int i=0;i<n;i++){
+	for (int j=0;j<m;j++){
+		if (i==0||j==0) dp[i][j]=1;
+		else dp[i][j]= dp[i-1][j]+dp[i][j-1];
+	}
+}
+```
+
+
+
+## 063. Unique Paths II
+
+**Tag: Dynamic Programming**
+
+**Solution:**
+
+DP$[i][j]$  means The number of paths to a $i,j$
+
+$DP$$[i][j]$ =DP$[i-1][j]$+DP$[i][j-1]$ 
+
+Need to handle the corner case that when $i=0||j=0$
+
+
+
+```c++
+for(int i=0;i<m;i++){
+	if(g[0][i]==0) dp[0][i]=1;
+	else break;
+}
+for(int i=0;i<n;i++) {
+	if(!g[i][0]) dp[i][0]=1;
+	else break;
+}
+```
+
+
+
+## 064. Minimum Path Sum
+
+**Tag: Dynamic Programming**
+
+**Solution:**
+
+DP$[i][j]$  means The minimum number of paths to a $i,j$ 
+
+Because the $dp[i][j]$ is conducted by the previous row, it can be compressed to $ dp[i]$
+
+$dp[i]=min(dp[j]+grid[i][j],dp[j-1]+grid[i][j]);$
+
+```c++
+for(int i=1;i<m;i++){
+	for(int j=0;j<n;j++){
+		if(j==0) dp[j]=dp[j]+grid[i][j];
+		else dp[j]=min(dp[j]+grid[i][j],dp[j-1]+grid[i][j]);
+	}
+}
+```
+
+
+
 ## 069. Sqrt(x)
 
 **Tag:Binary Search **
@@ -304,29 +375,4 @@ return make_pair(min(l.first,(LL)root->val),max((LL)root->val,r.second));
 ```
 
 
-
-## 102.Binary Tree Level Order Traversal 
-
-**Tag: BFS**
-
-**Solution:**
-
-using two queue 
-
-```c++
-while(!qu.empty()){
- 	vec.clear();
-	while(!qu.empty()){
-		if(qu.front()->left!=NULL) tmp.push(qu.front()->left);
-		if(qu.front()->right!=NULL) tmp.push(qu.front()->right);
-		vec.push_back(qu.front()->val);
-		qu.pop();
-	}
-	while(!tmp.empty()){
-		qu.push(tmp.front());
-		tmp.pop();
-	}
-	res.push_back(vec);
-}
-```
 
