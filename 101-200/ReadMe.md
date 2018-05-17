@@ -73,6 +73,8 @@ return max(maxDepth(root->left),maxDepth(root->right))+1;
 
 Maintaining four position:  the start and end position of preorder and inorder
 
+**Pay attention to the return value. Only if the return value is pointer, the tree can be set and connected.**
+
 **Code:**
 
 ```c++
@@ -139,6 +141,33 @@ This problem is similar to 104.
 
 ```c++
 if(abs(istree(root->left)-istree(root->right);)>1)  f=0;
+```
+
+
+
+## 112. Path Sum
+
+**Tag: DFS**
+
+**Solution:** 
+
+Use depth information
+
+```c++
+void hassum(TreeNode* root, int sum1){
+	if(!root||f) return;
+	else if(!root->left&&!root->right){
+		sum1+=root->val;
+		if(sum1>s) return;
+		else if(sum1==s){
+			f=1;return;
+        }
+    }
+    else{
+		hassum(root->left,sum1+root->val);
+		hassum(root->right,sum1+root->val);
+    }return;
+}
 ```
 
 
@@ -219,4 +248,36 @@ Use depth information.
         return;
     }
 ```
+
+
+
+## 141. Linked List Cycle
+
+**Tag: DFS**
+
+**Solution:**
+
+Use two pointers. One moves one step every time, the other moves two steps.
+
+**Code:**
+
+```c++
+while(first!=NULL&&second!=NULL&&second->next!=NULL){ 
+	first=first->next;  
+	second=second->next->next;  
+	if(first==second)  return true;  
+}  
+```
+
+
+
+## 141. Linked List Cycle
+
+**Tag: DFS**
+
+**Solution:**
+
+Use two pointers. One moves one step every time, the other moves two steps.
+
+**Code:**
 
