@@ -1,4 +1,6 @@
+# LeetCode 201-300
 
+[TOC]
 
 ## 207. Course Schedule
 
@@ -82,7 +84,7 @@ else return;
 
 
 
-## 300.  Longest Increasing Subsequence
+## 300. Longest Increasing Subsequence
 
 **Tag: Dynamic processing**
 
