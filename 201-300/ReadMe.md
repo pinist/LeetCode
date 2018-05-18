@@ -1,343 +1,103 @@
-## 102. Binary Tree Level Order Traversal
 
-**Tag: BFS**
 
-**Solution:**
+## 207. Course Schedule
 
-using two queue 
-
-```c++
-while(!qu.empty()){
- 	vec.clear();
-	while(!qu.empty()){
-		if(qu.front()->left!=NULL) tmp.push(qu.front()->left);
-		if(qu.front()->right!=NULL) tmp.push(qu.front()->right);
-		vec.push_back(qu.front()->val);
-		qu.pop();
-	}
-	while(!tmp.empty()){
-		qu.push(tmp.front());
-		tmp.pop();
-	}
-	res.push_back(vec);
-}
-```
-
-## 103. Binary Tree Zigzag Level Order Traversal
-
-**Tag: BFS**
+**Tag: Topological-sort**
 
 **Solution:**
 
-using two queue and reverse function of vector
+Topological-sort to judge the directed graph have loop. Pay attention to DFS for every node.
+
+**Code:**
 
 ```c++
-if(i) res.push_back(vec);
-else{
-	reverse(vec.begin(), vec.end());
-    res.push_back(vec);
+bool hasloop(int u){
+    if(vis[u]==1) return 1;
+    if(vis[u]==2) return 0;
+    vis[u]=1;
+    for(auto v: g[u]) if(hasloop(v)) return 1;
+    vis[u]=2;
+    return 0;
 }
-i=!i;
+
+for(int i=0;i<numCourses;i++) {
+	if(!vis[i]&&hasloop(i)) return 0;
+}
 ```
 
 
 
-## 104. Maximum Depth of Binary Tree 
+## 210. Course Schedule II
 
-**Tag: DFS**
+**Tag: Topological-sort**
 
 **Solution:**
 
-The recursive termination condition is a empty node, otherwise it returns the maximum height of the sub tree +1.
-
-**Remark:**
-
-This problem is similar to 110.
-
-
+Output the path of topological sort. Remember to reverse res(vector<int>).
 
 **Code:**
 
 ```c++
-if(!root)  return 0;
-return max(maxDepth(root->left),maxDepth(root->right))+1;
+bool dfs(int u){      //return true if has loop
+    if(vis[u]==1) return 1;
+    if(vis[u]==2) return 0;
+    vis[u]=1;
+    for(auto v:g[u]){
+        if(dfs(v)) return 1;}
+    vis[u]=2;
+    res.push_back(u);
+    return 0;
+}
 ```
 
 
 
-## 105. Binary Tree Zigzag Level Order Traversal
+## 226. Invert Binary Tree
 
-**Tag: DFS**
+**Tag:DFS**
 
 **Solution:**
 
-Maintaining four position:  the start and end position of preorder and inorder
+This problem is similar to preorder of binary tree.  Pay attention to discuss the pointers of sub tree.
 
-**Pay attention to the return value. Only if the return value is pointer, the tree can be set and connected.**
-
-**Code:**
+**Code:** 
 
 ```c++
-TreeNode* build(int l1,int r1,int l2,int r2){
-    if(l1>r1||l2>r2) 
-        return NULL;        
-    TreeNode *tmp;
-    int cnt=0;
-    tmp=new TreeNode(pre[l1]);
-    for(int i=l2;i<=r2;i++){
-        if(in[i]==tmp->val) {
-            cnt=i-l2;break;
-        }
-    }
-    tmp->left=build(l1+1,l1+cnt,l2,l2+cnt-1);
-    tmp->right=build(l1+cnt+1,r1,l2+cnt+1,r2);
-    return tmp;
+if(root->left!=NULL&&root->right!=NULL) {
+    TreeNode* tmp;
+	tmp=root->left;
+	root->left=root->right;
+	root->right=tmp;
 }
+else if(root->left!=NULL&&root->right==NULL){
+    root->right=root->left;
+    root->left=NULL;
+}
+else if(root->left==NULL&&root->right!=NULL){
+	root->left=root->right;
+	root->right=NULL;
+}
+else return;
 ```
 
 
 
-**Test Data:**  
+## 300.  Longest Increasing Subsequence
 
-$preorder = [3,9,20,15,7]$
-
-$inorder = [9,3,15,20,7]$
-
-
-
-## 107. Binary Tree Level Order Traversal II
-
-**Tag: DFS**
-
-**Solution:** 
-
-Using DFS, $vector<int>, vector<vector<int>> $  to solve the problem,
-
-**Code:**
-
-```c++
-vector<vector<int>> res;
-void pushlevel(TreeNode* root,int depth){
-	if(root==NULL) return;
-	if(res.size()==depth) res.emplace_back();
-	res[depth].push_back(root->val);
-	pushlevel(root->left,depth+1);
-	pushlevel(root->right,depth+1);
-	return;
-}
-```
-
-
-
-## 110. Balanced Binary Tree
-
-**Tag: DFS**
-
-**Solution:** 
-
-This problem is similar to 104.
-
-**Code:**
-
-```c++
-if(abs(istree(root->left)-istree(root->right);)>1)  f=0;
-```
-
-
-
-## 112. Path Sum
-
-**Tag: DFS**
-
-**Solution:** 
-
-Use depth information
-
-```c++
-void hassum(TreeNode* root, int sum1){
-	if(!root||f) return;
-	else if(!root->left&&!root->right){
-		sum1+=root->val;
-		if(sum1>s) return;
-		else if(sum1==s){
-			f=1;return;
-        }
-    }
-    else{
-		hassum(root->left,sum1+root->val);
-		hassum(root->right,sum1+root->val);
-    }return;
-}
-```
-
-
-
-## 114. Flatten Binary Tree to Linked List
-
-**Tag: DFS**
-
-**Solution:** 
-
-Using DFS to store the preorder result and then construct new Tree.
-
-**Code:**
-
-```c++
-void dfs(TreeNode* root){
-	if(root==NULL) return;
-	tmp.push_back(root->val);
-	dfs(root->left);dfs(root->right);
-	return;
-}
-TreeNode* convert(TreeNode *root,int dep){
-	if(dep==tmp.size()) return NULL;  
-	if(dep) root=new TreeNode(tmp[dep]);
-	root->left=NULL;
-	root->right=convert(root->right,dep+1);
-	return root;
-}
-```
-
-
-
-## 116. Populating Next Right Pointers in Each Node
-
-**Tag: BFS**
-
-**Solution:** 
-
-If the left child of the current node is not empty, the next point of the left child points to the right child of the current node.
-
-If the right child of the current node is not empty and the next node of the current node is not empty, the right child of current node points to the left child of the next node of the current node.
-
-```c++
-TreeLinkNode* lstart;lstart=root;
-	while(lstart!=NULL){
-	TreeLinkNode* cur;cur=lstart;
-	while(cur!=NULL){
-		if(cur->left!=NULL) cur->left->next=cur->right;
-         if(cur->right!=NULL&&cur->next!=NULL) cur->right->next=cur->next->left;
-         cur=cur->next;
-    }
-    lstart=lstart->left;
-}
-```
-
-
-
-## 129. Sum Root to Leaf Numbers
-
-**Tag: DFS**
+**Tag: Dynamic processing**
 
 **Solution:**
 
-Use depth information.
+using lower-bound to save time complexity.
 
-**Code:**
-
-```c++
- void dfs(TreeNode* root, int c){        
-        if(root==NULL) {
-            return;
-        }
-        int tmp=c*10+(root->val);
-        if(root->left==NULL&&root->right==NULL) ans+=tmp;
-        
-        dfs(root->left,tmp);
-        dfs(root->right,tmp);
-        return;
-    }
-```
-
-
-
-## 141. Linked List Cycle
-
-**Tag: DFS**
-
-**Solution:**
-
-Use two pointers. One moves one step every time, the other moves two steps.
-
-**Code:**
+**Code:** 
 
 ```c++
-while(first!=NULL&&second!=NULL&&second->next!=NULL){ 
-	first=first->next;  
-	second=second->next->next;  
-	if(first==second)  return true;  
-}  
-```
-
-
-
-## 169. Majority Element
-
-**Tag: DFS**
-
-**Solution:**
-
-If the majority element appears **more than** $⌊ n/2 ⌋$ times. The $⌊ n/2 ⌋$ th is that number.
-
-**Code:**
-
-```c++
-sort(nums.begin(),nums.end());
-return nums[nums.size()/2];
-```
-
-
-
-##  199. Binary Tree Right Side View
-
-**Tag: BFS**
-
-**Solution:**
-
-using two while-loop . This problem is similar to 102
-
-**Code:**
-
-```c++
-if(tmp.size()==1) vec.push_back(tmp.front()->val);
-qu.push(tmp.front());              
-```
-
-
-
-##  200.Number of Islands 
-
-**Tag: DFS**
-
-**Solution:**
-
-Seeking the Number of Unicom Blocks via DFS.
-
-**Code:**
-
-```c++
-void dfs(int r, int c, int id){
-	int v=grid.size();
-	if(r>=m||c>=n||c<0||r<0) return;
-	if(idx[r][c]>0||grid[r][c]!='1') return;
-	idx[r][c]=id;
-	for(int i=0;i<4;i++) {
-		int nx=r+dx[i];int ny=c+dy[i];
-		dfs(nx,ny,id);
-     }     
-}
-    
-for(int i=0;i<m;i++){
-	for(int j=0;j<n;j++) {
-		if(idx[i][j]==0&&grid[i][j]=='1')
-		dfs(i,j,++cnt);
-	}
+for(int i=0; i<n;i++){
+	int k=lower_bound(nlis.begin(),nlis.begin()+ans,nums[i])-nlis.begin();
+	if(k==ans) ans++;
+	nlis[k]=nums[i];
+	dp[i]=ans+1;
 }
 ```
-
-
-
-
-
-
 
