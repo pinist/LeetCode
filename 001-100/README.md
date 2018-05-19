@@ -262,6 +262,29 @@ void dfs(int cur){
 
 
 
+## 053.Maximum Subarray
+
+**Tag:Dynamic Processing**
+
+**Solution:**
+
+If($dp[i-1]<0$), $dp[i]=nums[i]$;
+
+else $dp[i]=dp[i-1]+1$
+
+**Code:**
+
+```c++
+for(int i=0;i<n;i++) dp.push_back(nums[i]);
+int res=dp[0];
+for(int i=1;i<n;i++) {
+ 	if(dp[i-1]>0) dp[i]=dp[i-1]+nums[i];
+ 	res=max(res,dp[i]);
+}
+```
+
+
+
 ## 062. Unique Paths 
 
 **Tag: Dynamic Programming**
