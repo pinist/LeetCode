@@ -115,6 +115,8 @@ Search the nearest the pair of RL. If the number of their distance is even, it w
 
 Pay attention to the case of ..R..
 
+Use the preIndex and prechar to help to solve problem.
+
 **Code:**
 
 ```c++
