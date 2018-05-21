@@ -88,3 +88,11 @@ for(int i=-n+1;i<n;i++){
 
 
 
+## 836. Rectangle Overlap
+
+**Tag: Ad-Hoc**
+
+**Solution:**
+
+sliding the matrix A left one step and placing it on top of matrix B means overlap A and B from the second row of matrix A
+
