@@ -94,5 +94,98 @@ for(int i=-n+1;i<n;i++){
 
 **Solution:**
 
-sliding the matrix A left one step and placing it on top of matrix B means overlap A and B from the second row of matrix A
+Enumerate the situation that are not overlap
+
+**Code:**
+
+```c++
+if(rec1[2]<=rec2[0]||rec2[2]<=rec1[0]) return false;
+if(rec1[3]<=rec2[1]||rec1[1]>=rec2[3]) return false;
+```
+
+
+
+## 838. Push Dominoes
+
+**Tag:  Ad-Hoc**
+
+**Solution:**
+
+Search the nearest the pair of RL. If the number of their distance is even, it will be RRLL. Otherwise. it will be RR.LL.
+
+Pay attention to the case of ..R..
+
+**Code:**
+
+```c++
+class Solution {
+public:
+    string domi;
+    void handleL(int sat,int end){
+        for(int i=sat;i<=end;i++) domi[i]='L';
+    }    
+    void handleR(int sat, int end){
+        for(int i=sat;i<=end;i++) domi[i]='R';
+    }    
+    string pushDominoes(string domin){
+        this->domi=domin;
+        int n=domi.length();
+        int preIn=-1;char pre='.';
+        for(int i=0;i<n;i++){
+            if(domi[i]=='L'){
+                if(pre=='R'){
+                    int mid=preIn+(i-preIn)/2;
+                    if((i-preIn)%2){             
+                        handleR(preIn+1,mid);
+                        handleL(mid+1,i-1);
+                    }
+                    else{
+                        handleR(preIn+1,mid-1);
+                        handleL(mid+1,i-1);
+                    }
+                }
+                else {
+                    handleL(preIn+1,i-1);
+                }
+                pre='L';
+                preIn=i;
+            }
+            else if(domi[i]=='R'){
+                if(pre=='R'){
+                    handleR(preIn+1,i-1);
+                }
+                pre='R';
+                preIn=i;
+            }
+            else continue;        
+        }
+        if(pre=='R'&&preIn<(n-1)) {
+            for(int i=preIn;i<n;i++) domi[i]='R';
+        }
+        return domi;
+    }
+};
+```
+
+
+
+## 839. Similar String Groups
+
+**Tag: Union-find**
+
+**Solution:**
+
+If two strings are similar, that means one string of which two letters swapped  equals to the other string.
+
+```c++
+bool issimilar(string A,string B){
+ 	int alen=A.length(),blen=B.length();
+ 	int cnt=0;
+ 	if(alen!=blen) return false;       
+  	else{
+  		for(int i=0;i<alen;i++)
+ 			if(A[i]!=B[i]) cnt++;}
+    return cnt==2;
+}
+```
 

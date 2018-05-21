@@ -380,6 +380,34 @@ int start=0,end=x;
 
 
 
+## 091. Decode Ways
+
+**Tag: Dynamic Processing**
+
+**Solution:**
+
+If only a single s[i] is translated, then the type of translation is DP[i]. If the value of the string formed by s[i-1] and s[i] is less than or equal to 26, then there may be another DP[i-1] translation method. 
+
+If the string formed by s[i-1] and s[i] is greater than 26, then obviously the number of translation methods is the same as that of s[i-1].
+
+Because 01 is not valid, set the dp[i]=0;
+
+**Code:**
+
+```c++
+dp[0]=dp[1]=1;
+for(int i=1;i<n;++i){
+ 	int t=(int)atoi(s.substr(i-1,2).c_str());
+ 	if(s[i]=='0') dp[i]=0;            
+ 	if(t>=1&&t<=26) dp[i+1]=dp[i]+dp[i-1];
+ 	else dp[i+1]=dp[i];
+}
+```
+
+
+
+
+
 ## 098. Validate Binary Search Tree
 
 **Tag:DFS**
