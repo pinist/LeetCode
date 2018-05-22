@@ -160,7 +160,31 @@ unique Time:$O(n)$
 **Code:**
 
 ```c++
-nums.erase(unique(nums.begin(),nums.end()),nums.end());
+nums.erase(unique(nums.begin(),nums.end()),nums.end())
+```
+
+
+
+## 034. Search for a Range
+
+**Tag: Binary-Search**
+
+**Solution:**
+
+Upper_bound(target)=lower_bound(target+1)-1
+
+**Code:**
+
+```c++
+while(start<=end){
+	mid=start+(end-start)/2;
+ 	if(target<=nums[mid]){
+ 	ans=min(ans,mid);
+ 	end=mid-1;
+ 	}
+ 	else start=mid+1;
+ }
+ return start;
 ```
 
 
