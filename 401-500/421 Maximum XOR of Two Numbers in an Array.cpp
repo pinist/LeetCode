@@ -32,7 +32,7 @@ public:
             else
             {
                 ans^=(1<<i);
-                now=now->son[tmp^1];
+                now=now->son[tmp^1];    
             }
         }
         return ans;
