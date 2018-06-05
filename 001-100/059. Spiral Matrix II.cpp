@@ -9,19 +9,20 @@ You should return the following matrix:
 */
 class Solution {
 public:
-    vector<int> spiralOrder(int n) {
-        vector<int> ans;
+    vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int> > ans;
         if(!n) return ans;
+        int tot=0;
+        vector<int> tmp(n,0);
+        ans.assign(n,tmp);
+        ans[0][0]=1;tot++;
         int x=0,y=0;
-        vector<vector<int> >vis(n,vector<int>(n,0));
-        vis[0][0]=1;
-        int tot=2;
-        while(tot<(n*n)){
-            while(y+1<n&&!vis[x][y+1])  vis[x][++y]=tot++;
-            while(x+1<m&&!vis[x+1][y])  vis[++x][y]=tot++;
-            while(y-1>=0&&!vis[x][y-1]) vis[x][--y]=tot++;
-            while(x-1>=0&&!vis[x-1][y]) vis[--x][y]=tot++;
+        while(tot<n*n){
+            while(y+1<n&& !ans[x][y+1]) ans[x][++y]=++tot;
+            while(x+1<n&& !ans[x+1][y]) ans[++x][y]=++tot;
+            while(y-1>=0&&!ans[x][y-1]) ans[x][--y]=++tot;
+            while(x-1>=0&&!ans[x-1][y]) ans[--x][y]=++tot;
         }
-        return vis;
+        return ans;
     }
 };
