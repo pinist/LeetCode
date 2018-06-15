@@ -1,11 +1,10 @@
 /*
-We are given a list of (axis-aligned) rectangles.  Each rectangle[i] = [x1, y1, x2, y2] , 
-where (x1, y1) are the coordinates of the bottom-left corner, and (x2, y2) are the coordinates 
-of the top-right corner of the ith rectangle.
-Find the total area covered by all rectangles in the plane.  Since the answer may be too large, 
-return it modulo 10^9 + 7.
+We are given a list of (axis-aligned) rectangles.  Each rectangle[i] = [x1, y1, x2, y2] , where (x1, y1) are the
+ coordinates of the bottom-left corner, and (x2, y2) are the coordinates of the top-right corner of the ith rectangle.
+Find the total area covered by all rectangles in the plane.  Since the answer may be too large, return it modulo 10^9 + 7.
  */
 Solution1:
+Time complexity:O(N3)
 class Solution {
 public:
     int rectangleArea(vector<vector<int>>& rectangles){
