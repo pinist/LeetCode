@@ -25,6 +25,8 @@ public:
         return res;
     }
 };
+
+
 Solution2:
 class Solution {
 public:
