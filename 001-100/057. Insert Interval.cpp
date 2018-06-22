@@ -11,6 +11,7 @@ You may assume that the intervals were initially sorted according to their start
  *     Interval(int s, int e) : start(s), end(e) {}
  * };
  */
+
 bool cmp(const Interval &A, const Interval &B){
     return A.start<B.start;
 }
