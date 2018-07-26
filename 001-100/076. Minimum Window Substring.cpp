@@ -41,3 +41,37 @@ public:
         
     }
 };
+
+Solution2:
+class Solution {
+public:
+    string minWindow(string s, string t) {
+        int tcnt[128]={0},scnt[128]={0};
+        int tlen=t.length();
+        for(char c:t){
+            tcnt[c]++;
+        }
+        
+        int slen=s.length(),cnt=0,ansl=0,ansr=INT_MAX,l=0;
+        for(int r=0;r<slen;r++){            
+            scnt[s[r]]++;
+            if(scnt[s[r]]<=tcnt[s[r]]) cnt++;
+            //cout<<cnt<<endl;
+            if(cnt==tlen){
+                while(scnt[s[l]]>tcnt[s[l]]){
+                    scnt[s[l]]--;l++;
+                }
+                //cout<<l<<' '<<r<<endl;
+                if(r-l<ansr-ansl)
+                {   
+                    ansl=l;ansr=r;
+                    cout<<ansl<<' '<<ansr<<endl;
+                    
+                } 
+            }
+            //cout<<l<<' '<<r<<endl;
+        }
+        return (ansr-ansl)==INT_MAX?"":s.substr(ansl,ansr-ansl+1);
+        
+    }
+};
