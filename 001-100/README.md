@@ -14,27 +14,28 @@ Comply with the principle of adder
 
 **Code:**
 
-	if(l1!=NULL)
-	{
-		now->val+=l1->val;
-		l1=l1->next;
-	}  
-	if(l2!=NULL)
-	{
-		now->val+=l2->val;
-		l2=l2->next;
-	}
+```c++
+if(l1!=NULL)
+{
+	now->val+=l1->val;
+	l1=l1->next;
+}  
+if(l2!=NULL)
+{
+	now->val+=l2->val;
+	l2=l2->next;
+}
+```
+
 
 
 ## 003. Longest Substring Without Repeating Characters
 
-**Tag:Ad-Hoc**
+**Tag:Sliding window**
 
 **Solution:**
 
 Using map to store the position of the last character
-
-
 
 **Code:**
 
@@ -45,6 +46,7 @@ ma.clear();
 ma[s[pre]]=pre;
 i=pre;
 ```
+
 
 
 ## 006. Zigzag Conversion
@@ -78,6 +80,7 @@ while(p>0&&f){
 ```
 
 
+
 ## 009. Palindrome Number
 
 **Tag: Ad-Hoc**
@@ -97,6 +100,7 @@ return before==after;
 ```
 
 
+
 ## 019. Remove Nth Node From End of List
 
 **Tag:list**
@@ -106,8 +110,6 @@ return before==after;
 Maintain two pointers,and the distance of these two pointers is N. Because they move together, When the second pointer arrives at the end, the first one approaches to the Nth Node From end of list.
 
 **Code:**
-
- 
 
 ```c++
 ListNode** t1=&head,*t2=head;
@@ -120,6 +122,7 @@ for(int i=1;i<n;++i)
 	*t1 = (*t1)->next;
  
 ```
+
 
 
 ## 020. Valid Parentheses
@@ -145,6 +148,7 @@ If s[i] is left parenthesis,put it into stack. If s[i] is the right parenthesis 
 	}
 }
 ```
+
 
 
 ## 026. Remove Duplicates from Sorted Array
@@ -292,7 +296,7 @@ void dfs(int cur){
 
 **Solution:**
 
-If($dp[i-1]<0$), $dp[i]=nums[i]$;
+If$(dp[i-1]<0)$, $dp[i]=nums[i]$;
 
 else $dp[i]=dp[i-1]+1$
 
@@ -317,7 +321,7 @@ for(int i=1;i<n;i++) {
 
 DP$[i][j]$  means The number of paths to a $i,j$
 
-$DP$$[i][j]$ =DP$[i-1][j]$+DP$[i][j-1]$
+$DP[i][j] =DP[i-1][j]+DP[i][j-1]$
 
 ```c++
 for (int i=0;i<n;i++){
@@ -338,7 +342,7 @@ for (int i=0;i<n;i++){
 
 DP$[i][j]$  means The number of paths to a $i,j$
 
-$DP$$[i][j]$ =DP$[i-1][j]$+DP$[i][j-1]$ 
+$DP[i][j]=DP[i-1][j]+DP[i][j-1]$ 
 
 Need to handle the corner case that when $i=0||j=0$
 
@@ -427,8 +431,6 @@ for(int i=1;i<n;++i){
  	else dp[i+1]=dp[i];
 }
 ```
-
-
 
 
 
