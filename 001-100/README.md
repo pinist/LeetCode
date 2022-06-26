@@ -4,9 +4,17 @@
 
 [TOC]
 
+## 001. Two Sum
+
+**Tag: brute force, binary search,hash table, special algorithm(从两边往中间跑）**
+
+
+
+
+
 ## 002. Add Two Numbers   
 
-**Tag: List**
+**Tag: Math(加法器）,List**
 
 **Solution:**
 
@@ -31,7 +39,7 @@ if(l2!=NULL)
 
 ## 003. Longest Substring Without Repeating Characters
 
-**Tag:Sliding window**
+**Tag: two pointers,Sliding window**
 
 **Solution:**
 
@@ -49,9 +57,13 @@ i=pre;
 
 
 
+## 005. Longest Palindromic Substring
+
+**Tag: DP, Manacher**
+
 ## 006. Zigzag Conversion
 
-**Tag: Ad-Hoc**
+**Tag: Ad-Hoc, implement**
 
 **Solution:**
 
@@ -81,6 +93,12 @@ while(p>0&&f){
 
 
 
+## 007. Reverse Integer
+
+**Tag: easy**
+
+
+
 ## 009. Palindrome Number
 
 **Tag: Ad-Hoc**
@@ -98,6 +116,28 @@ while(x){
 }
 return before==after;
 ```
+
+
+
+##  010. Regular Expression Matching
+
+**Tag: DP**
+
+
+
+## 011. Container With Most Water
+
+**Tag: two pointers. MonoStack**
+
+
+
+### 12. Integer to Roman $\bigstar\bigstar$ (I)
+
+Tag
+
+
+
+### 13. Roman to Integer $\bigstar\bigstar$ (I)
 
 
 
