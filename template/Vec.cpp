@@ -4,7 +4,7 @@
 #include <algorithm>
 using namespace std;
 
-vector<int> vec;
+
 
 struct Node
 {
@@ -19,11 +19,8 @@ int main()
 	vec.reserve(100);
 	cout<<vec.size()<<" "<<vec.capacity()<<endl<<endl;
 
-	vec.push_back(3);
-	vec.push_back(5);
-	vec.push_back(4);
-	vec.push_back(17);
-	vec.push_back(2);
+    vector<int> vec = {3, 5, 4, 17, 2};
+	
 	cout<<vec.size()<<endl;
 	
 	for(int i=0;i<vec.size();i++)

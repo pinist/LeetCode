@@ -68,6 +68,7 @@ int main()
 	cout<<endl<<endl;
 
 	pqn.push(Node(1,2));
+    //Construct and insert element
 	pqn.emplace(2,2);
 	pqn.emplace(2,1);
 	pqn.emplace(1,1);
