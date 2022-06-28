@@ -70,11 +70,11 @@ queue<>
 priority_queue<>
 deque<>
 stack<>
+map<>
+pair<>
 
 set<>
-map<>
 unordered_set<>
 unordered_map<>
 list<>
-
-pair<>, tuple<>, array<>, multiset<>, bitset<>
+tuple<>, array<>, multiset<>, bitset<>

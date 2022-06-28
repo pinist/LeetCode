@@ -27,7 +27,7 @@ int main()
 	cout<<mapi2i.upper_bound(4)->second<<endl<<endl;
 
 	cout<<(mapi2i.find(2)==mapi2i.end())<<endl<<endl;
-
+    cout<<(mapi2i.count(2)>0)<<endl<<endl;
 	mapi2i.erase(5);
 	for(map<int,int>::iterator it=mapi2i.begin();it!=mapi2i.end();it++)
 		cout<<it->first<<" "<<it->second<<endl;

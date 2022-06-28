@@ -12,14 +12,25 @@ struct Node
 	Node(){}
 	Node(int _a,int _b):a(_a),b(_b){}
 };
-vector<Node> vec2;
+
+
+static bool cmp(const pair<int,string>&a, const pair<int,string>&b){
+    return a.first>=b.first;
+}
 
 int main()
 {
+    vector<Node> vec2;
+    vector<int> vec = {3, 5, 4, 17, 2};
+	vec.push_back(3);
+	vec.push_back(5);
+	vec.push_back(4);
+	vec.push_back(17);
+	vec.push_back(2);
 	vec.reserve(100);
 	cout<<vec.size()<<" "<<vec.capacity()<<endl<<endl;
 
-    vector<int> vec = {3, 5, 4, 17, 2};
+   
 	
 	cout<<vec.size()<<endl;
 	
@@ -56,5 +67,11 @@ int main()
 		cout<<i<<" ";
 	cout<<endl;
 
+    vector<pair<int,string>> list ={{1,"2"},{3,"2"},{6,"2"}};
+    
+    sort(list.begin(),list.end(),cmp);
+    
+    for(auto [m,n]:list) cout<<m<<" "<<n<<endl;
+    
 	return 0;
 }
